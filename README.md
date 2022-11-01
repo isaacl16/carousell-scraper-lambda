@@ -1,4 +1,4 @@
-# Carousell-Scraper
+# Carousell-Scraper-Lambda
 
 This branch contains the version carousell-scraper used to deploy on AWS Lambda. 
 
