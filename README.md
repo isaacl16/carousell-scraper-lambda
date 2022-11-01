@@ -41,9 +41,9 @@ Since this application will need a headless browser for us to be able to scrape 
 
 For the deployment, the application is first compressed into a zipped archive which is then uploaded to AWS S3 buckets. After which the AWS Lambda function is updated using the newly uploaded zip. 
 
-The main question here is why go about such a long process for deployment?
-AWS Lambda has a file limit size of (50MB) and because we have to use a binary version of chromium for this instance, the file size exceeds the file limit. Thus, the reason for the long work around.
+The question here is why go about such a long process for deployment?
+AWS Lambda has a file limit size of 50MB and because we have to use a binary version of chromium, the file size exceeds the file limit. Thus, the workaround is to instead upload the zip to S3 and update the Lambda function from there since the 50 MB limit doesn’t apply when you load the function from S3. 
 
 ## Addition 
 ---
-A rule can be setup to run the application on a schedule using EventBridge. This is a relatively simple process thus I will not be explaining it here. Follow this [tutorial](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-run-lambda-schedule.html) instead.
+A rule can be setup to run the application on a schedule using EventBridge. This is a relatively simple process thus I will not be explaining it here. Follow this tutorial [here](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-run-lambda-schedule.html) instead.
