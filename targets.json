@@ -1,0 +1,6 @@
+[
+    {
+      "Id": "1", 
+      "Arn": "arn:aws:lambda:ap-southeast-1:310049967473:function:carousell-scraper"
+    }
+]

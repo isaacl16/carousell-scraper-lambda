@@ -1,0 +1,24 @@
+{
+  "name": "carousell_scraper",
+  "version": "1.0.0",
+  "description": "Scrape listings from carousell and message using telegram bots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "zip": "zip -r function.zip .",
+    "uploadConfig": "aws s3 cp config.json s3://carousell-scraper-bucket",
+    "sendToLambda": "npm run zip && npm run uploadConfig && aws s3 cp function.zip s3://carousell-scraper-bucket && rm function.zip && aws lambda update-function-code --function-name carousell-scraper --s3-bucket carousell-scraper-bucket --s3-key function.zip"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sparticuz/chromium": "^106.0.2",
+    "async": "^3.2.4",
+    "aws-sdk": "^2.1241.0",
+    "axios": "^1.1.3",
+    "dotenv": "^16.0.3",
+    "node-telegram-bot-api": "^0.59.0",
+    "puppeteer-core": "^18.0.5"
+  }
+}
