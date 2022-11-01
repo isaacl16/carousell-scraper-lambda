@@ -1,18 +1,12 @@
 [
   {
-    "chatId": "<telegram chat Id>",
+    "chatId": "<Telegram Chat Id>",
     "searchList": [
       {
-        "searchString": "Iphone 13",
+        "searchString": "<Search>",
         "priceRange": {
-          "min": 200
-        }
-      }, 
-      {
-        "searchString": "ipad pro 12.9 2018",
-        "priceRange": {
-          "min" : 500,
-          "max" : 700
+          "min": "<Min Value>",
+          "max": "<Max Value>"
         }
       }
     ]
