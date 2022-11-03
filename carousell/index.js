@@ -132,13 +132,13 @@ exports.getListings = async (tokens, chatId, search) => {
             Body: JSON.stringify(processedData.updatedJsonData),
             ContentEncoding: 'base64',
             ContentType: 'application/json',
-            ACL: 'public-read'
         };
         await aws.writeFile(params)
-        // utils.writeData(fileName, processedData.updatedJsonData)
         return processedData.result
     }).catch((err) => {
+        console.log("in catch")
         console.error(err.message);
+        return []
     });
 
 
@@ -153,16 +153,13 @@ const processListings = (jsonData, data) => {
         const title = listingCard.title
         const price = listingCard.price
         let epoch = listingCard.aboveFold[0].timestampContent.seconds.low
-
-        // const time = dateTime * 1000 + timeZone * 1000
-        // let date = new Date(epoch)
-        // date = date.toUTCString()
         let date = new Date(1970)
         date.setSeconds(epoch + 28800)
         date = date.toUTCString()
         if (!(id in jsonData)) {
-            console.log(id + " not found")
+            console.log("Not found: " + id)
             result.push({
+                id: id,
                 title: title,
                 price: price,
                 date: date,

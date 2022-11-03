@@ -8,9 +8,9 @@ exports.telegram = async (data, chatId) => {
     console.log("Sending to telegram chatId: " + chatId)
     for (const listing of listings) {
         await bot.sendMessage(chatId, listing.title + '\n' + listing.price + "\n" + listing.date + "\n" + listing.url).then(() => {
-            console.log({ listing } + " sent")
+            console.log("Sent: " + listing.id)
         }).catch((err) => {
-            console.log(err)
+            console.error(err)
         })
     }
     console.log("Sending complete: " + chatId)

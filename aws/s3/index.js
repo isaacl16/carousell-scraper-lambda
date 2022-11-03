@@ -13,10 +13,10 @@ exports.readFile = async (params) => {
         }, function () {
             s3.getObject(params, function (err, data) {
                 if (err) {
-                    console.log("JSON not found in bucket")
+                    console.log("File not found: " + params.Key)
                     resolve({});
                 } else {
-                    console.log("Successfully dowloaded " + params + " from  bucket");
+                    console.log("Successfully dowloaded file: " + params.Key);
                     const body = JSON.parse(data.Body.toString())
                     resolve(body);
                 }
@@ -33,9 +33,11 @@ exports.writeFile = async (params) => {
         }, function () {
             s3.putObject(params, function (err, data) {
                 if (err) {
-                    reject(err)
+                    console.error("Error when writing file: " + params.Key)
+                    console.error(err.message)
+                    resolve(data)
                 } else {
-                    console.log("Successfully uploaded data to bucket");
+                    console.log("Successfully uploaded file: " + params.Key);
                     resolve(data);
                 }
             });
