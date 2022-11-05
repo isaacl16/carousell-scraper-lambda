@@ -1,0 +1,14 @@
+[
+  {
+    "chatId": "<Telegram Chat Id>",
+    "searchList": [
+      {
+        "searchString": "<Search>",
+        "priceRange": {
+          "min": "<Min Value>",
+          "max": "<Max Value>"
+        }
+      }
+    ]
+  }
+]
