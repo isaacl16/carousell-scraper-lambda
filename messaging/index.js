@@ -1,8 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api')
-const token = process.env.TELEGRAM_BOT_TOKEN
 
-
-exports.telegram = async (data, chatId) => {
+exports.telegram = async (data, chatId, token) => {
     const listings = data
     const bot = new TelegramBot(token)
     console.log("Sending to telegram chatId: " + chatId)
@@ -14,4 +12,5 @@ exports.telegram = async (data, chatId) => {
         })
     }
     console.log("Sending complete: " + chatId)
+
 }

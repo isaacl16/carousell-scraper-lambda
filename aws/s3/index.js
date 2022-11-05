@@ -1,8 +1,6 @@
 const aws = require('aws-sdk')
 
 const s3 = new aws.S3({
-    accessKeyId: process.env.AWS_USER_ACCESS_ID,
-    secretAccessKey: process.env.AWS_USER_SECRET_ACCESS_KEY,
     Bucket: "carousell-scraper-bucket"
 })
 
@@ -13,7 +11,7 @@ exports.readFile = async (params) => {
         }, function () {
             s3.getObject(params, function (err, data) {
                 if (err) {
-                    console.log("File not found: " + params.Key)
+                    console.log("Error reading file: " + params.Key)
                     resolve({});
                 } else {
                     console.log("Successfully dowloaded file: " + params.Key);
@@ -44,3 +42,4 @@ exports.writeFile = async (params) => {
         });
     });
 }
+

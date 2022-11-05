@@ -8,6 +8,7 @@
     "start": "node index.js",
     "zip": "zip -r function.zip .",
     "uploadConfig": "aws s3 cp config.json s3://carousell-scraper-bucket",
+    "invokeLambda": "aws lambda invoke --function-name carousell-scraper --cli-binary-format raw-in-base64-out response.json",
     "sendToLambda": "npm run zip && npm run uploadConfig && aws s3 cp function.zip s3://carousell-scraper-bucket && rm function.zip && aws lambda update-function-code --function-name carousell-scraper --s3-bucket carousell-scraper-bucket --s3-key function.zip"
   },
   "author": "",

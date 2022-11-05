@@ -4,9 +4,9 @@ const chromium = require("@sparticuz/chromium")
 const axios = require('axios')
 // const fs = require('fs')
 // const utils = require('../utils')
-const aws = require('../aws/s3')
+const s3 = require('../aws/s3')
 
-let searchSize = 10
+let searchSize = 30
 
 
 exports.getTokens = async () => {
@@ -77,7 +77,7 @@ exports.getListings = async (tokens, chatId, search) => {
         Key: path
     };
 
-    jsonData = await aws.readFile(params)
+    jsonData = await s3.readFile(params)
     // jsonData = utils.readData(fileName)
 
     if (search.priceRange) {
@@ -133,7 +133,7 @@ exports.getListings = async (tokens, chatId, search) => {
             ContentEncoding: 'base64',
             ContentType: 'application/json',
         };
-        await aws.writeFile(params)
+        await s3.writeFile(params)
         return processedData.result
     }).catch((err) => {
         console.log("in catch")
